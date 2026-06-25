@@ -62,6 +62,7 @@ jobs:
       - uses: azure/setup-helm@v3
       - run: |
           helm upgrade my-deployment helm-charts/deployments \
+            --install \
             --set image.repository=$IMAGE \
             --set image.tag=$IMAGE_TAG \
             --namespace $NAMESPACE \
@@ -86,6 +87,7 @@ jobs:
       - uses: azure/setup-helm@v3
       - run: |
           helm upgrade my-deployment helm-charts/deployments \
+            --install \
             --set service.activeVersion=$TARGET_COLOR \
             --namespace $NAMESPACE \
             --reuse-values
