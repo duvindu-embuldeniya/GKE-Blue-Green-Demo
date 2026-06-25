@@ -2,9 +2,9 @@ namespace: dev
 
 image:
   repository: duvindune/repo1
-  tag: v2
 
 blue:
+  tag: 1
   replicas: 1
   resources:
     requests:
@@ -19,6 +19,7 @@ blue:
     cpuUtilization: 50
 
 green:
+  tag: 1
   replicas: 1
   resources:
     requests:
