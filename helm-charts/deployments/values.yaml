@@ -1,0 +1,85 @@
+namespace: dev
+
+image:
+  repository: duvindune/repo1
+  tag: v2
+
+blue:
+  replicas: 1
+  resources:
+    requests:
+      memory: "128Mi"
+      cpu: "250m"
+    limits:
+      memory: "256Mi"
+      cpu: "500m"
+  hpa:
+    minReplicas: 1
+    maxReplicas: 5
+    cpuUtilization: 50
+
+green:
+  replicas: 1
+  resources:
+    requests:
+      memory: "128Mi"
+      cpu: "250m"
+    limits:
+      memory: "256Mi"
+      cpu: "500m"
+  hpa:
+    minReplicas: 1
+    maxReplicas: 5
+    cpuUtilization: 50
+
+service:
+  port: 8000
+  targetPort: 8000
+  activeVersion: blue
+
+probes:
+  startup:
+    path: /start/
+    periodSeconds: 5
+    timeoutSeconds: 5
+    failureThreshold: 60
+  readiness:
+    path: /ready/
+    initialDelaySeconds: 10
+    periodSeconds: 5
+    timeoutSeconds: 2
+    failureThreshold: 3
+  liveness:
+    path: /live/
+    initialDelaySeconds: 20
+    periodSeconds: 10
+    timeoutSeconds: 2
+    failureThreshold: 3
+
+postgres:
+  image: postgres:16
+  replicas: 1
+  storage: 1Gi
+  pgdata: /var/lib/postgresql/data/pgdata
+  resources:
+    requests:
+      memory: "512Mi"
+      cpu: "250m"
+    limits:
+      memory: "512Mi"
+      cpu: "500m"
+  service:
+    port: 5432
+
+secret:
+  dbName: mydatabase
+  dbUser: myuser
+  dbPassword: mypassword
+  secretKey: django-insecure--@u)%e+8o@tfhle%^np*ydyh&-1ybd3gpsl=ko)nu07w=v6n*&
+
+ingress:
+  staticIpName: k8s-test
+  host: www.duvindu.org
+  servicePort: 8000
+  certificate:
+    name: django-mc
