@@ -1,3 +1,5 @@
+![Project Banner](https://drive.google.com/uc?export=view&id=1dRpxmXm8Q0bBDkk2-tatowTnsyhzoCVZ)
+
 # What is NEG
 
 **NEG (Network Endpoint Group)** is a list that the Google Cloud Load Balancer uses to know exactly which pod IPs to send traffic to.
