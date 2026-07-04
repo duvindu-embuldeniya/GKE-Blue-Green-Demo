@@ -38,4 +38,4 @@ Update propagates to the Load Balancer
 Traffic flows correctly again
 ```
 
-![Project Banner](https://drive.google.com/uc?export=view&id=1dRpxmXm8Q0bBDkk2-tatowTnsyhzoCVZ)
+![Project Banner](https://drive.google.com/uc?export=view&id=1WNFyuf6Nq29eWmOA64jJGzJhy_OcK1QI)
